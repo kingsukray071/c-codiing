@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+struct stack {
+    int a[20];
+    int top;
+};
+
+
+void push(struct stack *st, int x) {
+    if (st->top == 19) {
+        printf("Stack overflow\n");
+    } else {
+        st->a[++st->top] = x;
+    }
+}
+
+
+void pop(struct stack *st) {
+    if (st->top == -1) {
+        printf("Stack underflow\n");
+    } else {
+        printf("Popped: %d\n", st->a[st->top--]);
+    }
+}
+
+int main() {
+    struct stack st;
+    st.top = -1;
+
+    push(&st, 10);
+    push(&st, 20);
+    pop(&st);
+
+    return 0;
+}
